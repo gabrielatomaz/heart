@@ -15,13 +15,13 @@
 </head>
 
 <body>
- <audio controls autoplay style="hight:0; width:0">
-  <source src="joji-slow-dancing-in-the-dark-lyrics-on-screen.mp3" type="audio/mpeg">
-</audio>
+
 
     <script>
     $(function () {
         var stop = false;
+        var audio =  new Audio("joji-slow-dancing-in-the-dark-lyrics-on-screen.mp3");
+        
         function greetings(term) {
             term.echo('Digite "solta o som DJ" para começar.');
         }
@@ -31,6 +31,7 @@
 
         $('body').terminal(function (command, term) {
             if (command == 'solta o som DJ') {
+                audio.play();
                 term.pause();
                 stop = false;
                 play(term);
