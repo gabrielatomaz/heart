@@ -1,0 +1,127 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery.terminal/2.1.2/js/jquery.terminal.min.js"></script>
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/jquery.terminal/2.1.2/css/jquery.terminal.min.css" rel="stylesheet" />
+    <meta charset="UTF-8">
+
+    <style>
+        .terminal {
+            --size: 1.5;
+        }
+    </style>
+</head>
+
+<body>
+</body>
+<iframe width="150" height="150" wmode="transparent" src="https://www.youtube.com/embed/sVDiAoxdR8E?autoplay=1&loop=1&playlist=VIDEO_ID" frameborder="0" allowfullscreen>
+    </iframe>
+<script>
+    $(function () {
+        var stop = false;
+        function greetings(term) {
+            term.echo('Digite "solta o som DJ" para começar.');
+        }
+        function play(term) {
+            heartMessage(term);
+        }
+
+        $('body').terminal(function (command, term) {
+            if (command == 'solta o som DJ') {
+                term.pause();
+                stop = false;
+                play(term);
+            }
+        }, {
+                width: 1600,
+                height: 787,
+                prompt: 'gabLinda> ',
+                greetings: null,
+                onInit: function (term) {
+                    greetings(term)
+                },
+                keypress: function (e, term) {
+                    if (e.which == 100 && e.ctrlKey) {
+                        stop = true;
+                        term.resume();
+                        return false;
+                    }
+                }
+            });
+
+        function getRndInteger(min, max) {
+            return Math.floor(Math.random() * (max - min)) + min;
+        }
+
+        function sleep(ms) {
+            return new Promise(resolve => setTimeout(resolve, ms));
+        }
+
+        async function heartMessage(term) {
+
+            var alana = [];
+            while (true) {
+                var leftSpaces = getRndInteger(6, 60);
+                var loves = 8;
+
+                for (var i = 0; i < 18; i++) {
+                    var count = leftSpaces;
+
+                    var whiteSpace = '';
+                    while (count > 0) {
+                        whiteSpace += ' ';
+                        count -= 1;
+                    }
+
+                    count = loves;
+                    var alana = "";
+                    while (count > 0) {
+
+                        if (i == 0 && count == 4)
+                            alana += '     ';
+                        else if (i < 2 && count == 5)
+                            alana += '     ';
+                        else
+                            alana += 'ALANA';
+                        count -= 1;
+                    }
+
+                    term.echo('[[i;red;]' + whiteSpace + alana);
+
+                    if (i < 5) {
+                        leftSpaces = leftSpaces - 2;
+                        loves += 1;
+                    } else {
+                        leftSpaces = leftSpaces + 2;
+                        loves -= 1;
+                    }
+
+                    await sleep(400);
+                }
+
+                term.echo('\n');
+                await sleep(400);
+                count = getRndInteger(6, 60);
+
+                var wS = '';
+                while (count > 0) {
+                    wS += ' ';
+                    count -= 1;
+                }
+
+                term.echo('[[b;green;]' + wS + "M A N D A  N U D E S");
+                await sleep(400);
+                term.echo('\n');
+                await sleep(400);
+            }
+
+        }
+
+    });
+
+
+</script>
+
+</html>
