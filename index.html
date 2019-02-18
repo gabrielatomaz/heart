@@ -62,8 +62,6 @@
         }
 
         async function heartMessage(term) {
-
-            var alana = [];
             while (true) {
                 var leftSpaces = getRndInteger(6, 60);
                 var loves = 8;
@@ -78,19 +76,19 @@
                     }
 
                     count = loves;
-                    var alana = "";
+                    var nome = "";
                     while (count > 0) {
 
                         if (i == 0 && count == 4)
-                            alana += '     ';
+                            nome += '     ';
                         else if (i < 2 && count == 5)
-                            alana += '     ';
+                            nome += '     ';
                         else
-                            alana += 'ALANA';
+                            nome += 'ALANA';
                         count -= 1;
                     }
 
-                    term.echo('[[i;red;]' + whiteSpace + alana);
+                    term.echo('[[i;red;]' + whiteSpace + nome);
 
                     if (i < 5) {
                         leftSpaces = leftSpaces - 2;
