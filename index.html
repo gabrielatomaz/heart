@@ -23,14 +23,14 @@
         var audio =  new Audio("joji-slow-dancing-in-the-dark-lyrics-on-screen.mp3");
         
         function greetings(term) {
-            term.echo('Digite "solta o som DJ" para começar.');
+            term.echo('Digite "sociologia e pressione "enter" para começar.');
         }
         function play(term) {
             heartMessage(term);
         }
 
         $('body').terminal(function (command, term) {
-            if (command == 'solta o som DJ') {
+            if (command == 'sociologia') {
                 audio.play();
                 term.pause();
                 stop = false;
