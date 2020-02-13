@@ -23,14 +23,14 @@
         var audio =  new Audio("joji-slow-dancing-in-the-dark-lyrics-on-screen.mp3");
         
         function greetings(term) {
-            term.echo('Digite sociologia e pressione "enter" para começar.');
+            term.echo('Digite "solta o som dj" e pressione "enter" para começar.');
         }
         function play(term) {
             heartMessage(term);
         }
 
         $('body').terminal(function (command, term) {
-            if (command == 'sociologia') {
+            if (command == 'solta o som dj') {
                 audio.play();
                 term.pause();
                 stop = false;
@@ -39,7 +39,7 @@
         }, {
                 width: 1600,
                 height: 787,
-                prompt: 'software_livre> ',
+                prompt: 'gabinha> ',
                 greetings: null,
                 onInit: function (term) {
                     greetings(term)
@@ -111,7 +111,7 @@
                     count -= 1;
                 }
 
-                term.echo('[[b;green;]' + wS + "P R O F,   M E   DA  10  :D");
+                term.echo('[[b;green;]' + wS + "S U R T O");
                 await sleep(400);
                 term.echo('\n');
                 await sleep(400);
