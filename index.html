@@ -30,7 +30,7 @@
         }
 
         $('body').terminal(function (command, term) {
-            if (command == 'solta o som dj') {
+            if ((command.toLowerCase().trim()) == 'solta o som dj') {
                 audio.play();
                 term.pause();
                 stop = false;
